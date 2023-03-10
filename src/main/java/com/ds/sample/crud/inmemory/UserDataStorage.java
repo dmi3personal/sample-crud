@@ -34,7 +34,7 @@ public class UserDataStorage implements UserStorage {
         List<UserData> result = new LinkedList<>();
         storage.keySet().stream().forEach(key -> {
             InternalUserData data = storage.get(key);
-            result.add( new UserData(key, data.name, data.eMail));
+            result.add( new UserData(key, data.firstName, data.lastName, data.eMail));
         });
         return result;
     }
@@ -52,9 +52,9 @@ public class UserDataStorage implements UserStorage {
         } else {
             newId = 1;
         }
-        InternalUserData newEntry = new InternalUserData(userData.getName(), userData.getEmail());
+        InternalUserData newEntry = new InternalUserData(userData.getFirstName(), userData.getLastName(), userData.getEmail());
         storage.put(newId, newEntry);
-        return new UserData(newId, newEntry.name, newEntry.eMail);
+        return new UserData(newId, newEntry.firstName, newEntry.lastName, newEntry.eMail);
     }
 
     /**
@@ -72,7 +72,7 @@ public class UserDataStorage implements UserStorage {
     public boolean updateUser(int id, User user) {
         InternalUserData data = storage.get(id);
         if (data != null) {
-            storage.put(id,  new InternalUserData(user.getName(), user.getEmail()));
+            storage.put(id,  new InternalUserData(user.getFirstName(), user.getLastName(), user.getEmail()));
             return true;
         } else {
             return false;
@@ -98,11 +98,13 @@ public class UserDataStorage implements UserStorage {
      */
     private static class InternalUserData {
 
-        final String name;
+        final String firstName;
+        final String lastName;
         final String eMail;
 
-        InternalUserData(String aName, String anEmail) {
-            this.name = aName;
+        InternalUserData(String name, String surname, String anEmail) {
+            this.firstName = name;
+            this.lastName = surname;
             this.eMail = anEmail;
         }
     }

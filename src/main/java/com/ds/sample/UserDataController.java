@@ -24,9 +24,10 @@ public class UserDataController {
     @GetMapping("/create")
     public User createNewUser(
             @RequestParam(value = "name") String name,
+            @RequestParam(value = "surname") String surname,
             @RequestParam(value = "email") String email) {
         try {
-            return controller.create(new User(null, name, email));
+            return controller.create(new User(null, name, surname, email));
         } catch (UserManagementException e) {
             e.printStackTrace();
             throw new RuntimeException(e.getMessage());
@@ -48,9 +49,10 @@ public class UserDataController {
     public void updateUser(
             @RequestParam(value = "id") int id,
             @RequestParam(value = "name") String newName,
+            @RequestParam(value = "surname") String surname,
             @RequestParam(value = "email") String newEmail) throws UserManagementException {
         try {
-            controller.update(id, new User(newName, newEmail) );
+            controller.update(id, new User(newName, surname, newEmail) );
         } catch (UserManagementException e) {
             e.printStackTrace();
             throw new RuntimeException(e.getMessage());

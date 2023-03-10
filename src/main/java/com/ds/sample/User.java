@@ -6,7 +6,8 @@ package com.ds.sample;
 public class User {
 
     private Integer id;
-    private String name;
+    private String firstName;
+    private String lastName;
     private String email;
 
     /**
@@ -17,32 +18,33 @@ public class User {
 
     /**
      * Created pre-filled instance.
-     * @param newName User name.
-     * @param newEmail User e-mail address.
+     * @param newFirstName User's first name.
+     * @param newLastName User's last name.
+     * @param newEmail User's e-mail
      */
-    public User(String newName, String newEmail) {
-        this.name = newName;
+    public User(String newFirstName, String newLastName, String newEmail) {
+        this.firstName = newFirstName;
+        this.lastName = newLastName;
         this.email = newEmail;
     }
 
     /**
      * Created pre-filled instance.
      * @param newId User identifier.
-     * @param newName User name.
+     * @param newFirstName User's first name.
+     * @param newLastName User's last name.
      * @param newEmail User e-mail address.
      */
-    public User(Integer newId, String newName, String newEmail) {
-        this.id = newId;
-        this.name = newName;
+    public User(Integer newId, String newFirstName, String newLastName, String newEmail) {
+        this.firstName = newFirstName;
+        this.lastName = newLastName;
         this.email = newEmail;
     }
 
     public Integer getId() {
         return id;
     }
-    public String getName() {
-        return name;
-    }
+
     public String getEmail() {
         return email;
     }
@@ -51,11 +53,23 @@ public class User {
         this.id = newValue;
     }
 
-    public void setName(String newValue) {
-        this.name = newValue;
-    }
-
     public void setEmail(String newValue) {
         this.email = newValue;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 }

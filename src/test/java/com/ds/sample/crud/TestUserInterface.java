@@ -37,13 +37,13 @@ public class TestUserInterface {
         assertThrows(NullPointerException.class, () -> service.create(null));
         assertThrows(UserManagementException.class, () -> service.create(new User()));
 
-        User user = new User(null, "A Name", "some@email.com");
+        User user = new User(null, "A Name", "Last name", "some@email.com");
         User result = service.create(user);
         assertNotNull(result, "Not null result expected");
         assertNotNull(result.getId(), "Not null result expected for user ID");
         assertNotSame(result, user, "New instance of object is expected, not the one given as argument");
         assertEquals(result.getEmail(), "some@email.com", "Invalid e-mail of created user");
-        assertEquals(result.getName(), "A Name", "Invalid name for the created user");
+        assertEquals(result.getFirstName(), "A Name", "Invalid name for the created user");
     }
 
     /**
@@ -52,13 +52,13 @@ public class TestUserInterface {
      */
     @Test
     public void test_listUsers() throws Exception {
-        service.create(new User(null, "Another user", "and e-mail"));
+        service.create(new User(null, "Another user", "Last name", "and e-mail"));
 
         List<User> result = service.list();
         assertNotNull(result, "Resulting list shall not be null");
         assertTrue(result.size() > 0, "Expected at least one (created) element in result");
         assertTrue(result.stream().anyMatch(
-            user -> "Another user".equals(user.getName()) && "and e-mail".equals(user.getEmail()))
+            user -> "Another user".equals(user.getFirstName()) && "and e-mail".equals(user.getEmail()))
             );
     }
 }
