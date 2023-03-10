@@ -17,6 +17,16 @@ public class User {
 
     /**
      * Created pre-filled instance.
+     * @param newName User name.
+     * @param newEmail User e-mail address.
+     */
+    public User(String newName, String newEmail) {
+        this.name = newName;
+        this.email = newEmail;
+    }
+
+    /**
+     * Created pre-filled instance.
      * @param newId User identifier.
      * @param newName User name.
      * @param newEmail User e-mail address.

@@ -8,6 +8,7 @@ import java.util.OptionalInt;
 
 import org.springframework.stereotype.Component;
 
+import com.ds.sample.User;
 import com.ds.sample.crud.UserData;
 import com.ds.sample.crud.UserStorage;
 
@@ -54,6 +55,42 @@ public class UserDataStorage implements UserStorage {
         InternalUserData newEntry = new InternalUserData(userData.getName(), userData.getEmail());
         storage.put(newId, newEntry);
         return new UserData(newId, newEntry.name, newEntry.eMail);
+    }
+
+    /**
+     * Checks if given user exists in storage or not.
+     */
+    @Override
+    public boolean userExists(int id) {
+        return storage.keySet().stream().anyMatch( key -> key.intValue() == id );
+    }
+
+    /**
+     * Updates user information using user's id.
+     */
+    @Override
+    public boolean updateUser(int id, User user) {
+        InternalUserData data = storage.get(id);
+        if (data != null) {
+            storage.put(id,  new InternalUserData(user.getName(), user.getEmail()));
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * Deletes information about user specified by id.
+     */
+    @Override
+    public boolean deleteUser(int userId) {
+        InternalUserData data = storage.get(userId);
+        if (data != null) {
+            storage.remove(userId);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
