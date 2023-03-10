@@ -36,6 +36,7 @@ public class User {
      * @param newEmail User e-mail address.
      */
     public User(Integer newId, String newFirstName, String newLastName, String newEmail) {
+        this.id = newId;
         this.firstName = newFirstName;
         this.lastName = newLastName;
         this.email = newEmail;
