@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 
 import com.ds.sample.UserInterface;
+import com.ds.sample.crud.inmemory.UserDataStorage;
 
 /**
  * Configuration for spring-using tests. 
@@ -19,7 +20,7 @@ public class TestConfiguration {
     }
 
     @Bean
-    public UserDataStorage createDataStorage() {
+    public UserStorage createDataStorage() {
         return new UserDataStorage();
     }
 }

@@ -1,4 +1,4 @@
-package com.ds.sample.crud;
+package com.ds.sample.crud.inmemory;
 
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -8,11 +8,14 @@ import java.util.OptionalInt;
 
 import org.springframework.stereotype.Component;
 
+import com.ds.sample.crud.UserData;
+import com.ds.sample.crud.UserStorage;
+
 /**
  * Component that stores User data in memory.
  */
 @Component
-public class UserDataStorage {
+public class UserDataStorage implements UserStorage {
 
     private static Map<Integer, InternalUserData> storage = new HashMap<>();
 

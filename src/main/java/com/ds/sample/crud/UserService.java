@@ -8,12 +8,16 @@ import org.springframework.stereotype.Component;
 import com.ds.sample.User;
 import com.ds.sample.UserInterface;
 import com.ds.sample.UserManagementException;
+import com.ds.sample.crud.inmemory.UserDataStorage;
 
+/**
+ * Implementation of UserInterface that uses in-memory storage.
+ */
 @Component
 public class UserService implements UserInterface {
 
     @Autowired
-    private UserDataStorage storage;
+    private UserStorage storage;
 
     /**
      * Creates new instance of the service.
@@ -21,11 +25,15 @@ public class UserService implements UserInterface {
     public UserService() {
     }
 
+    /**
+     * Returns list of all users registered in storage.
+     */
     @Override
     public List<User> list() throws UserManagementException {
-        storage.readAll();
-        // TODO Auto-generated method stub
-        return null;
+        List<User> result = storage.readAll().stream()
+                .map( user -> new User( user.getId(), user.getName(), user.getEmail() ) )
+                .toList();
+        return result;
     }
 
     /**
