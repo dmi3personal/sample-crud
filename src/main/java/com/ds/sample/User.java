@@ -5,7 +5,7 @@ package com.ds.sample;
  */
 public class User {
 
-    private int id;
+    private Integer id;
     private String name;
     private String email;
 
@@ -21,13 +21,13 @@ public class User {
      * @param newName User name.
      * @param newEmail User e-mail address.
      */
-    public User(int newId, String newName, String newEmail) {
+    public User(Integer newId, String newName, String newEmail) {
         this.id = newId;
         this.name = newName;
         this.email = newEmail;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
     public String getName() {

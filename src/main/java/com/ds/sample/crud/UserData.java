@@ -1,4 +1,4 @@
-package crud;
+package com.ds.sample.crud;
 
 /**
  * DTO used in persistence model, not intended to send data over network.
@@ -11,14 +11,14 @@ public class UserData {
 
 	/**
 	 * Creates object filled with data.
-	 * @param newId User identifier for the new instance.
-	 * @param newName User name for the new instance.
-	 * @param newEmail E-mail for the new instance.
+	 * @param userId User identifier for the new instance.
+	 * @param userName User name for the new instance.
+	 * @param userEmail E-mail for the new instance.
 	 */
-	public UserData(int newId, String newName, String newEmail) {
-		this.id = newId;
-		this.name = newName;
-		this.email = newEmail;
+	public UserData(int userId, String userName, String userEmail) {
+		this.id = userId;
+		this.name = userName;
+		this.email = userEmail;
 	}
 
 	public int getId() {

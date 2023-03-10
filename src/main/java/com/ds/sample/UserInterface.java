@@ -1,9 +1,18 @@
 package com.ds.sample;
 
+import java.util.List;
+
 /**
  * Simple user-management interface. 
  */
 public interface UserInterface {
+
+    /**
+     * Lists all known users.
+     * @return Non-null list of users.
+     * @throws UserManagementException if cannot list users due to an internal error.
+     */
+    public List<User> list() throws UserManagementException;
 
     /**
      * Creates a record for a new user. This method shall ignore user's identifier given as the input. 
